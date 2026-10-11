@@ -14,9 +14,7 @@ import {
   Eye,
   X,
   PlayCircle,
-  Sparkles,
   ChevronDown,
-  Flame,
   Check,
 } from "lucide-react";
 
@@ -45,8 +43,6 @@ const statuses: OperationStatus[] = [
   "Completed",
   "Failed",
 ];
-
-const priorities: OperationPriority[] = ["Low", "Medium", "High", "Urgent"];
 
 const statusStyles: Record<OperationStatus, { pill: string; dot: string }> = {
   Completed: {
@@ -112,14 +108,18 @@ function StatCard({
           </p>
         </div>
 
-        <div className={`rounded-xl sm:rounded-2xl p-2.5 sm:p-3.5 shadow-md ${color}`}>
+        <div
+          className={`rounded-xl sm:rounded-2xl p-2.5 sm:p-3.5 shadow-md ${color}`}
+        >
           <Icon size={20} className="sm:w-[22px] sm:h-[22px]" />
         </div>
       </div>
 
       <div className="mt-3 sm:mt-4 flex items-center justify-between border-t border-slate-100 pt-2 sm:pt-3 text-[10px] sm:text-xs text-slate-500 dark:border-white/5 dark:text-slate-400">
         <span className="truncate max-w-[90px] sm:max-w-none">{badgeText}</span>
-        <span className="font-semibold text-indigo-600 dark:text-indigo-400">Live</span>
+        <span className="font-semibold text-indigo-600 dark:text-indigo-400">
+          Live
+        </span>
       </div>
     </article>
   );
@@ -129,7 +129,10 @@ function LoadingSkeleton() {
   return (
     <div className="space-y-4 p-8" role="status" aria-live="polite">
       <div className="flex items-center justify-center gap-3 py-12 text-slate-500 dark:text-slate-400">
-        <LoaderCircle className="animate-spin text-indigo-600 dark:text-indigo-400" size={32} />
+        <LoaderCircle
+          className="animate-spin text-indigo-600 dark:text-indigo-400"
+          size={32}
+        />
         <span className="text-sm font-semibold">Streaming requests...</span>
       </div>
     </div>
@@ -139,11 +142,7 @@ function LoadingSkeleton() {
 /**
  * Interactive inline status changer with optimistic UI update
  */
-function InlineStatusChanger({
-  operation,
-}: {
-  operation: Operation;
-}) {
+function InlineStatusChanger({ operation }: { operation: Operation }) {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const updateStatus = useUpdateOperationStatus();
@@ -152,7 +151,10 @@ function InlineStatusChanger({
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(e.target as Node)
+      ) {
         setOpen(false);
       }
     }
@@ -179,7 +181,10 @@ function InlineStatusChanger({
       >
         <span className={`h-1.5 w-1.5 rounded-full ${currentConfig.dot}`} />
         <span>{operation.status}</span>
-        <ChevronDown size={12} className="opacity-60 transition-transform group-hover:opacity-100" />
+        <ChevronDown
+          size={12}
+          className="opacity-60 transition-transform group-hover:opacity-100"
+        />
       </button>
 
       {open && (
@@ -234,7 +239,10 @@ export function OperationsPage() {
 
   // Synchronize local input state only if URL search changed externally (e.g. Back/Forward button)
   useEffect(() => {
-    if (search !== searchInput && document.activeElement?.id !== "operations-search") {
+    if (
+      search !== searchInput &&
+      document.activeElement?.id !== "operations-search"
+    ) {
       setSearchInput(search);
     }
   }, [search]);
@@ -400,7 +408,8 @@ export function OperationsPage() {
           </h1>
 
           <p className="mt-2 max-w-2xl text-xs sm:text-sm text-slate-500 dark:text-slate-400">
-            Real-time management for 5,000+ workload requests with optimistic updates.
+            Real-time management for 5,000+ workload requests with optimistic
+            updates.
           </p>
         </div>
 
@@ -535,11 +544,36 @@ export function OperationsPage() {
               onChange={(event) => updateParams({ status: event.target.value })}
               className="rounded-2xl border border-slate-200/80 bg-white px-3.5 py-2.5 text-sm font-medium text-slate-700 outline-none transition focus:border-indigo-500 dark:border-white/10 dark:bg-[#111827] dark:text-slate-100 dark:focus:border-indigo-400"
             >
-              <option value="All" className="bg-white text-slate-800 dark:bg-[#111827] dark:text-slate-100">All statuses</option>
-              <option value="Pending" className="bg-white text-slate-800 dark:bg-[#111827] dark:text-slate-100">Pending only</option>
-              <option value="Running" className="bg-white text-slate-800 dark:bg-[#111827] dark:text-slate-100">Running only</option>
-              <option value="Completed" className="bg-white text-slate-800 dark:bg-[#111827] dark:text-slate-100">Completed only</option>
-              <option value="Failed" className="bg-white text-slate-800 dark:bg-[#111827] dark:text-slate-100">Failed only</option>
+              <option
+                value="All"
+                className="bg-white text-slate-800 dark:bg-[#111827] dark:text-slate-100"
+              >
+                All statuses
+              </option>
+              <option
+                value="Pending"
+                className="bg-white text-slate-800 dark:bg-[#111827] dark:text-slate-100"
+              >
+                Pending only
+              </option>
+              <option
+                value="Running"
+                className="bg-white text-slate-800 dark:bg-[#111827] dark:text-slate-100"
+              >
+                Running only
+              </option>
+              <option
+                value="Completed"
+                className="bg-white text-slate-800 dark:bg-[#111827] dark:text-slate-100"
+              >
+                Completed only
+              </option>
+              <option
+                value="Failed"
+                className="bg-white text-slate-800 dark:bg-[#111827] dark:text-slate-100"
+              >
+                Failed only
+              </option>
             </select>
 
             {/* Priority Filter */}
@@ -551,11 +585,36 @@ export function OperationsPage() {
               }
               className="rounded-2xl border border-slate-200/80 bg-white px-3.5 py-2.5 text-sm font-medium text-slate-700 outline-none transition focus:border-indigo-500 dark:border-white/10 dark:bg-[#111827] dark:text-slate-100 dark:focus:border-indigo-400"
             >
-              <option value="All" className="bg-white text-slate-800 dark:bg-[#111827] dark:text-slate-100">All priorities</option>
-              <option value="Urgent" className="bg-white text-slate-800 dark:bg-[#111827] dark:text-slate-100">Urgent only</option>
-              <option value="High" className="bg-white text-slate-800 dark:bg-[#111827] dark:text-slate-100">High only</option>
-              <option value="Medium" className="bg-white text-slate-800 dark:bg-[#111827] dark:text-slate-100">Medium only</option>
-              <option value="Low" className="bg-white text-slate-800 dark:bg-[#111827] dark:text-slate-100">Low only</option>
+              <option
+                value="All"
+                className="bg-white text-slate-800 dark:bg-[#111827] dark:text-slate-100"
+              >
+                All priorities
+              </option>
+              <option
+                value="Urgent"
+                className="bg-white text-slate-800 dark:bg-[#111827] dark:text-slate-100"
+              >
+                Urgent only
+              </option>
+              <option
+                value="High"
+                className="bg-white text-slate-800 dark:bg-[#111827] dark:text-slate-100"
+              >
+                High only
+              </option>
+              <option
+                value="Medium"
+                className="bg-white text-slate-800 dark:bg-[#111827] dark:text-slate-100"
+              >
+                Medium only
+              </option>
+              <option
+                value="Low"
+                className="bg-white text-slate-800 dark:bg-[#111827] dark:text-slate-100"
+              >
+                Low only
+              </option>
             </select>
 
             {/* Sort Filter */}
@@ -572,11 +631,36 @@ export function OperationsPage() {
               }}
               className="rounded-2xl border border-slate-200/80 bg-white px-3.5 py-2.5 text-sm font-medium text-slate-700 outline-none transition focus:border-indigo-500 dark:border-white/10 dark:bg-[#111827] dark:text-slate-100 dark:focus:border-indigo-400"
             >
-              <option value="createdAt:desc" className="bg-white text-slate-800 dark:bg-[#111827] dark:text-slate-100">Newest created</option>
-              <option value="createdAt:asc" className="bg-white text-slate-800 dark:bg-[#111827] dark:text-slate-100">Oldest created</option>
-              <option value="updatedAt:desc" className="bg-white text-slate-800 dark:bg-[#111827] dark:text-slate-100">Recently updated</option>
-              <option value="priority:desc" className="bg-white text-slate-800 dark:bg-[#111827] dark:text-slate-100">Highest priority first</option>
-              <option value="title:asc" className="bg-white text-slate-800 dark:bg-[#111827] dark:text-slate-100">Title (A-Z)</option>
+              <option
+                value="createdAt:desc"
+                className="bg-white text-slate-800 dark:bg-[#111827] dark:text-slate-100"
+              >
+                Newest created
+              </option>
+              <option
+                value="createdAt:asc"
+                className="bg-white text-slate-800 dark:bg-[#111827] dark:text-slate-100"
+              >
+                Oldest created
+              </option>
+              <option
+                value="updatedAt:desc"
+                className="bg-white text-slate-800 dark:bg-[#111827] dark:text-slate-100"
+              >
+                Recently updated
+              </option>
+              <option
+                value="priority:desc"
+                className="bg-white text-slate-800 dark:bg-[#111827] dark:text-slate-100"
+              >
+                Highest priority first
+              </option>
+              <option
+                value="title:asc"
+                className="bg-white text-slate-800 dark:bg-[#111827] dark:text-slate-100"
+              >
+                Title (A-Z)
+              </option>
             </select>
 
             {/* Clear Filters Button */}
@@ -642,7 +726,9 @@ export function OperationsPage() {
                 role="alert"
                 className="border-b border-rose-200 bg-rose-50 px-5 py-3 text-xs text-rose-700 dark:border-rose-900/40 dark:bg-rose-950/40 dark:text-rose-300"
               >
-                <span>Latest background update failed. Retrying automatically.</span>
+                <span>
+                  Latest background update failed. Retrying automatically.
+                </span>
                 <button
                   type="button"
                   onClick={() => void operationsQuery.refetch()}
@@ -666,7 +752,9 @@ export function OperationsPage() {
                       <div className="min-w-0 flex-1">
                         <Link
                           to={`/operations/${encodeURIComponent(operation.id)}`}
-                          state={{ from: `${location.pathname}${location.search}` }}
+                          state={{
+                            from: `${location.pathname}${location.search}`,
+                          }}
                           className="font-bold text-sm text-slate-800 dark:text-slate-100 hover:text-indigo-600 dark:hover:text-indigo-400 block truncate"
                         >
                           {titleText}
@@ -695,7 +783,9 @@ export function OperationsPage() {
                       <span>{formatDate(operation.createdAt)}</span>
                       <Link
                         to={`/operations/${encodeURIComponent(operation.id)}`}
-                        state={{ from: `${location.pathname}${location.search}` }}
+                        state={{
+                          from: `${location.pathname}${location.search}`,
+                        }}
                         className="inline-flex items-center gap-1 font-bold text-indigo-600 dark:text-indigo-400 hover:underline"
                       >
                         <Eye size={13} />

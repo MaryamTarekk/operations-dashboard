@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
-import { useLocation, useNavigate, useParams, Link } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import {
   ArrowLeft,
   CalendarDays,
   Clock3,
-  UserRound,
-  Hash,
   RefreshCw,
   LoaderCircle,
   AlertCircle,
@@ -13,7 +11,6 @@ import {
   Save,
   AlertTriangle,
   RotateCcw,
-  Sparkles,
 } from "lucide-react";
 
 import { useOperation, useUpdateOperation } from "../hooks/useOperations";
@@ -90,7 +87,9 @@ export function OperationDetailsPage() {
 
   const [successToast, setSuccessToast] = useState(false);
   const [showDiscardModal, setShowDiscardModal] = useState(false);
-  const [pendingNavigation, setPendingNavigation] = useState<string | null>(null);
+  const [pendingNavigation, setPendingNavigation] = useState<string | null>(
+    null,
+  );
 
   // Sync form state when data loads or updates
   useEffect(() => {
@@ -106,11 +105,11 @@ export function OperationDetailsPage() {
   // Check if user has made unsaved modifications
   const isDirty = Boolean(
     operation &&
-      (formTitle !== (operation.title || operation.name) ||
-        formOwner !== operation.owner ||
-        formStatus !== operation.status ||
-        formPriority !== (operation.priority || "Medium") ||
-        formDescription !== (operation.description || ""))
+    (formTitle !== (operation.title || operation.name) ||
+      formOwner !== operation.owner ||
+      formStatus !== operation.status ||
+      formPriority !== (operation.priority || "Medium") ||
+      formDescription !== (operation.description || "")),
   );
 
   // Warn user on browser tab close or refresh if form is dirty
@@ -190,7 +189,10 @@ export function OperationDetailsPage() {
         role="status"
         aria-live="polite"
       >
-        <LoaderCircle size={34} className="animate-spin text-indigo-600 dark:text-indigo-400" />
+        <LoaderCircle
+          size={34}
+          className="animate-spin text-indigo-600 dark:text-indigo-400"
+        />
         <p className="text-sm font-semibold">Loading request details...</p>
       </div>
     );
@@ -239,7 +241,10 @@ export function OperationDetailsPage() {
           onClick={handleAttemptBack}
           className="group inline-flex items-center gap-2 rounded-xl px-3 py-2 text-xs font-bold text-slate-600 transition hover:bg-white hover:text-indigo-600 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
         >
-          <ArrowLeft size={16} className="transition-transform group-hover:-translate-x-1" />
+          <ArrowLeft
+            size={16}
+            className="transition-transform group-hover:-translate-x-1"
+          />
           <span>Back to requests list (Preserves filters)</span>
         </button>
 
@@ -269,7 +274,9 @@ export function OperationDetailsPage() {
               <span
                 className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold ring-1 ring-inset ${currentStatusConfig.pill}`}
               >
-                <span className={`h-2 w-2 rounded-full ${currentStatusConfig.dot}`} />
+                <span
+                  className={`h-2 w-2 rounded-full ${currentStatusConfig.dot}`}
+                />
                 {operation.status}
               </span>
 
@@ -286,7 +293,8 @@ export function OperationDetailsPage() {
               Edit Request & Metadata
             </h1>
             <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
-              Update any request field. Unsaved changes are guarded against accidental dismissal.
+              Update any request field. Unsaved changes are guarded against
+              accidental dismissal.
             </p>
           </div>
 
@@ -299,7 +307,11 @@ export function OperationDetailsPage() {
             >
               <RefreshCw
                 size={14}
-                className={operationQuery.isFetching ? "animate-spin text-indigo-600" : ""}
+                className={
+                  operationQuery.isFetching
+                    ? "animate-spin text-indigo-600"
+                    : ""
+                }
               />
               <span>Reload</span>
             </button>
@@ -363,7 +375,11 @@ export function OperationDetailsPage() {
                 className="mt-1.5 w-full rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-800 outline-none transition focus:border-indigo-500 dark:border-white/10 dark:bg-[#111827] dark:text-slate-100 dark:focus:border-indigo-400"
               >
                 {priorities.map((p) => (
-                  <option key={p} value={p} className="bg-white text-slate-800 dark:bg-[#111827] dark:text-slate-100">
+                  <option
+                    key={p}
+                    value={p}
+                    className="bg-white text-slate-800 dark:bg-[#111827] dark:text-slate-100"
+                  >
                     {p}
                   </option>
                 ))}
@@ -387,7 +403,11 @@ export function OperationDetailsPage() {
                 className="mt-1.5 w-full rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-800 outline-none transition focus:border-indigo-500 dark:border-white/10 dark:bg-[#111827] dark:text-slate-100 dark:focus:border-indigo-400"
               >
                 {statuses.map((s) => (
-                  <option key={s} value={s} className="bg-white text-slate-800 dark:bg-[#111827] dark:text-slate-100">
+                  <option
+                    key={s}
+                    value={s}
+                    className="bg-white text-slate-800 dark:bg-[#111827] dark:text-slate-100"
+                  >
                     {s}
                   </option>
                 ))}
@@ -473,7 +493,9 @@ export function OperationDetailsPage() {
               <CalendarDays size={18} />
             </div>
             <div>
-              <p className="text-[11px] text-slate-400 uppercase font-semibold">Created Timestamp</p>
+              <p className="text-[11px] text-slate-400 uppercase font-semibold">
+                Created Timestamp
+              </p>
               <p className="text-xs font-bold text-slate-800 dark:text-white">
                 {formatDate(operation.createdAt)}
               </p>
@@ -487,7 +509,9 @@ export function OperationDetailsPage() {
               <Clock3 size={18} />
             </div>
             <div>
-              <p className="text-[11px] text-slate-400 uppercase font-semibold">Last Updated Timestamp</p>
+              <p className="text-[11px] text-slate-400 uppercase font-semibold">
+                Last Updated Timestamp
+              </p>
               <p className="text-xs font-bold text-slate-800 dark:text-white">
                 {formatDate(operation.updatedAt)}
               </p>
@@ -513,7 +537,8 @@ export function OperationDetailsPage() {
             </div>
 
             <p className="mt-3 text-xs leading-relaxed text-slate-500 dark:text-slate-400">
-              You edited this request but haven't saved your modifications. If you leave now, your changes will be discarded.
+              You edited this request but haven't saved your modifications. If
+              you leave now, your changes will be discarded.
             </p>
 
             <div className="mt-6 flex flex-wrap justify-end gap-3">

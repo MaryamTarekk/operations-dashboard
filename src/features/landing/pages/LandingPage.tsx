@@ -5,26 +5,19 @@ import {
   ArrowRight,
   ShieldCheck,
   Zap,
-  SlidersHorizontal,
   Clock,
-  Sparkles,
-  Server,
-  Layers,
   Database,
   Moon,
   Sun,
   Flame,
   Search,
   CheckCircle2,
-  AlertTriangle,
-  RotateCw,
 } from "lucide-react";
 import { useTheme } from "../../../context/ThemeContext";
 
 export function LandingPage() {
   const { theme, toggleTheme } = useTheme();
   const [simulatedQuery, setSimulatedQuery] = useState("");
-  const [activeTab, setActiveTab] = useState<"features" | "concurrency" | "metrics">("features");
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 transition-colors duration-300 dark:bg-[#070b14] dark:text-slate-100">
@@ -82,9 +75,15 @@ export function LandingPage() {
               className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:bg-slate-100 dark:border-white/10 dark:bg-slate-800/80 dark:text-slate-300 dark:hover:bg-slate-700"
             >
               {theme === "dark" ? (
-                <Sun size={18} className="text-amber-400 transition-transform hover:rotate-45" />
+                <Sun
+                  size={18}
+                  className="text-amber-400 transition-transform hover:rotate-45"
+                />
               ) : (
-                <Moon size={18} className="text-indigo-600 transition-transform hover:-rotate-12" />
+                <Moon
+                  size={18}
+                  className="text-indigo-600 transition-transform hover:-rotate-12"
+                />
               )}
             </button>
 
@@ -95,7 +94,10 @@ export function LandingPage() {
             >
               <span className="hidden xs:inline">Launch Dashboard</span>
               <span className="xs:hidden">Dashboard</span>
-              <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
+              <ArrowRight
+                size={15}
+                className="transition-transform group-hover:translate-x-1"
+              />
             </Link>
           </div>
         </div>
@@ -119,9 +121,10 @@ export function LandingPage() {
           </h1>
 
           <p className="mt-4 sm:mt-6 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-lg dark:text-slate-300">
-            Engineered with strict separation of concerns, concurrency-safe query aborts,
-            and sub-millisecond filtering across massive dataset states. Complete with dark mode,
-            real-time telemetry, and resilient lifecycle mutations.
+            Engineered with strict separation of concerns, concurrency-safe
+            query aborts, and sub-millisecond filtering across massive dataset
+            states. Complete with dark mode, real-time telemetry, and resilient
+            lifecycle mutations.
           </p>
 
           <div className="mt-8 sm:mt-10 flex flex-col xs:flex-row items-stretch xs:items-center justify-center gap-3 sm:gap-4 w-full xs:w-auto px-4 xs:px-0">
@@ -130,7 +133,10 @@ export function LandingPage() {
               className="group inline-flex items-center justify-center gap-2.5 sm:gap-3 rounded-2xl bg-gradient-to-r from-indigo-600 via-indigo-600 to-violet-600 px-6 sm:px-8 py-3.5 sm:py-4 text-sm sm:text-base font-bold text-white shadow-xl shadow-indigo-600/30 transition-all hover:scale-105 hover:shadow-indigo-600/50"
             >
               <span>Enter Operations Console</span>
-              <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+              <ArrowRight
+                size={18}
+                className="transition-transform group-hover:translate-x-1"
+              />
             </Link>
 
             <a
@@ -152,8 +158,12 @@ export function LandingPage() {
                   Total Dataset
                 </span>
               </div>
-              <p className="mt-1.5 sm:mt-2 text-2xl sm:text-3xl font-extrabold tracking-tight">5,000</p>
-              <p className="mt-0.5 sm:mt-1 text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">Mock records</p>
+              <p className="mt-1.5 sm:mt-2 text-2xl sm:text-3xl font-extrabold tracking-tight">
+                5,000
+              </p>
+              <p className="mt-0.5 sm:mt-1 text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">
+                Mock records
+              </p>
             </div>
 
             <div className="rounded-2xl border border-slate-200 bg-white/80 p-3.5 sm:p-5 shadow-sm backdrop-blur-md dark:border-white/10 dark:bg-slate-900/60">
@@ -163,8 +173,12 @@ export function LandingPage() {
                   Race Shield
                 </span>
               </div>
-              <p className="mt-1.5 sm:mt-2 text-2xl sm:text-3xl font-extrabold tracking-tight">100%</p>
-              <p className="mt-0.5 sm:mt-1 text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">AbortSignal guard</p>
+              <p className="mt-1.5 sm:mt-2 text-2xl sm:text-3xl font-extrabold tracking-tight">
+                100%
+              </p>
+              <p className="mt-0.5 sm:mt-1 text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">
+                AbortSignal guard
+              </p>
             </div>
 
             <div className="rounded-2xl border border-slate-200 bg-white/80 p-3.5 sm:p-5 shadow-sm backdrop-blur-md dark:border-white/10 dark:bg-slate-900/60">
@@ -174,8 +188,12 @@ export function LandingPage() {
                   Mock Latency
                 </span>
               </div>
-              <p className="mt-1.5 sm:mt-2 text-2xl sm:text-3xl font-extrabold tracking-tight">300ms+</p>
-              <p className="mt-0.5 sm:mt-1 text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">Jitter simulated</p>
+              <p className="mt-1.5 sm:mt-2 text-2xl sm:text-3xl font-extrabold tracking-tight">
+                300ms+
+              </p>
+              <p className="mt-0.5 sm:mt-1 text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">
+                Jitter simulated
+              </p>
             </div>
 
             <div className="rounded-2xl border border-slate-200 bg-white/80 p-3.5 sm:p-5 shadow-sm backdrop-blur-md dark:border-white/10 dark:bg-slate-900/60">
@@ -185,8 +203,12 @@ export function LandingPage() {
                   Statuses
                 </span>
               </div>
-              <p className="mt-1.5 sm:mt-2 text-2xl sm:text-3xl font-extrabold tracking-tight">4 States</p>
-              <p className="mt-0.5 sm:mt-1 text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">Pending, Done...</p>
+              <p className="mt-1.5 sm:mt-2 text-2xl sm:text-3xl font-extrabold tracking-tight">
+                4 States
+              </p>
+              <p className="mt-0.5 sm:mt-1 text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">
+                Pending, Done...
+              </p>
             </div>
           </div>
         </div>
@@ -214,7 +236,9 @@ export function LandingPage() {
           <div className="p-6">
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div>
-                <h3 className="text-xl font-bold tracking-tight">Mission Control Console</h3>
+                <h3 className="text-xl font-bold tracking-tight">
+                  Mission Control Console
+                </h3>
                 <p className="text-xs text-slate-500 dark:text-slate-400">
                   Filtered preview with live mock data
                 </p>
@@ -250,16 +274,44 @@ export function LandingPage() {
             {/* Mock Rows */}
             <div className="mt-4 divide-y divide-slate-100 rounded-xl border border-slate-100 overflow-hidden dark:divide-white/5 dark:border-white/5">
               {[
-                { id: "REQ-00001", name: "Payment Processing Gateway 1", owner: "Sarah Chen", status: "Completed", time: "2 mins ago" },
-                { id: "REQ-00002", name: "Data Synchronization Service 2", owner: "James Wilson", status: "Running", time: "Just now" },
-                { id: "REQ-00003", name: "Bulk User Data Import 3", owner: "Emily Davis", status: "Pending", time: "10 mins ago" },
-                { id: "REQ-00004", name: "Analytics Processing Engine 4", owner: "Michael Brown", status: "Failed", time: "1 hour ago" },
+                {
+                  id: "REQ-00001",
+                  name: "Payment Processing Gateway 1",
+                  owner: "Sarah Chen",
+                  status: "Completed",
+                  time: "2 mins ago",
+                },
+                {
+                  id: "REQ-00002",
+                  name: "Data Synchronization Service 2",
+                  owner: "James Wilson",
+                  status: "Running",
+                  time: "Just now",
+                },
+                {
+                  id: "REQ-00003",
+                  name: "Bulk User Data Import 3",
+                  owner: "Emily Davis",
+                  status: "Pending",
+                  time: "10 mins ago",
+                },
+                {
+                  id: "REQ-00004",
+                  name: "Analytics Processing Engine 4",
+                  owner: "Michael Brown",
+                  status: "Failed",
+                  time: "1 hour ago",
+                },
               ]
                 .filter(
                   (item) =>
                     !simulatedQuery ||
-                    item.name.toLowerCase().includes(simulatedQuery.toLowerCase()) ||
-                    item.id.toLowerCase().includes(simulatedQuery.toLowerCase())
+                    item.name
+                      .toLowerCase()
+                      .includes(simulatedQuery.toLowerCase()) ||
+                    item.id
+                      .toLowerCase()
+                      .includes(simulatedQuery.toLowerCase()),
                 )
                 .map((row) => (
                   <div
@@ -276,16 +328,18 @@ export function LandingPage() {
                     </div>
 
                     <div className="flex items-center gap-4">
-                      <span className="text-xs text-slate-500 dark:text-slate-400">{row.owner}</span>
+                      <span className="text-xs text-slate-500 dark:text-slate-400">
+                        {row.owner}
+                      </span>
                       <span
                         className={`rounded-full px-2.5 py-0.5 text-xs font-semibold ${
                           row.status === "Completed"
                             ? "bg-emerald-50 text-emerald-700 ring-1 ring-emerald-500/20 dark:bg-emerald-950/40 dark:text-emerald-400"
                             : row.status === "Running"
-                            ? "bg-blue-50 text-blue-700 ring-1 ring-blue-500/20 dark:bg-blue-950/40 dark:text-blue-400"
-                            : row.status === "Pending"
-                            ? "bg-amber-50 text-amber-700 ring-1 ring-amber-500/20 dark:bg-amber-950/40 dark:text-amber-400"
-                            : "bg-red-50 text-red-700 ring-1 ring-red-500/20 dark:bg-red-950/40 dark:text-red-400"
+                              ? "bg-blue-50 text-blue-700 ring-1 ring-blue-500/20 dark:bg-blue-950/40 dark:text-blue-400"
+                              : row.status === "Pending"
+                                ? "bg-amber-50 text-amber-700 ring-1 ring-amber-500/20 dark:bg-amber-950/40 dark:text-amber-400"
+                                : "bg-red-50 text-red-700 ring-1 ring-red-500/20 dark:bg-red-950/40 dark:text-red-400"
                         }`}
                       >
                         {row.status}
@@ -300,7 +354,10 @@ export function LandingPage() {
       </section>
 
       {/* Architecture & Race Condition Protection Section */}
-      <section id="architecture" className="border-t border-slate-200 bg-slate-100/60 py-20 dark:border-white/10 dark:bg-[#0b101e]/80">
+      <section
+        id="architecture"
+        className="border-t border-slate-200 bg-slate-100/60 py-20 dark:border-white/10 dark:bg-[#0b101e]/80"
+      >
         <div className="mx-auto max-w-7xl px-6">
           <div className="text-center">
             <span className="rounded-full bg-indigo-100 px-3 py-1 text-xs font-bold uppercase tracking-wider text-indigo-700 dark:bg-indigo-950/70 dark:text-indigo-300">
@@ -310,9 +367,10 @@ export function LandingPage() {
               Deterministic Query Resolution Under Network Jitter
             </h2>
             <p className="mx-auto mt-3 max-w-2xl text-slate-600 dark:text-slate-300">
-              Simulated real-world network latency (300ms–1200ms) with out-of-order race guards.
-              When a user changes their search query before the previous request finishes,
-              stale packets are discarded immediately.
+              Simulated real-world network latency (300ms–1200ms) with
+              out-of-order race guards. When a user changes their search query
+              before the previous request finishes, stale packets are discarded
+              immediately.
             </p>
           </div>
 
@@ -323,7 +381,8 @@ export function LandingPage() {
               </div>
               <h3 className="mt-4 text-lg font-bold">1. Debounced Input</h3>
               <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
-                Keeps the UI responsive at 60fps without triggering premature calls while the user is still typing.
+                Keeps the UI responsive at 60fps without triggering premature
+                calls while the user is still typing.
               </p>
             </div>
 
@@ -333,7 +392,8 @@ export function LandingPage() {
               </div>
               <h3 className="mt-4 text-lg font-bold">2. Native AbortSignal</h3>
               <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
-                Every request carries an active AbortSignal. In-flight delayed queries are formally cancelled if parameters mutate.
+                Every request carries an active AbortSignal. In-flight delayed
+                queries are formally cancelled if parameters mutate.
               </p>
             </div>
 
@@ -341,9 +401,13 @@ export function LandingPage() {
               <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
                 <CheckCircle2 size={24} />
               </div>
-              <h3 className="mt-4 text-lg font-bold">3. URL State Persistence</h3>
+              <h3 className="mt-4 text-lg font-bold">
+                3. URL State Persistence
+              </h3>
               <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
-                All filters and queries are synced to the URL and location state. Open details, change status, and navigate back with zero loss.
+                All filters and queries are synced to the URL and location
+                state. Open details, change status, and navigate back with zero
+                loss.
               </p>
             </div>
           </div>
@@ -358,8 +422,8 @@ export function LandingPage() {
               Ready to explore all 5,000 operations?
             </h2>
             <p className="mt-4 text-indigo-200 text-base sm:text-lg">
-              Launch into the full operations console with real-time charts, dark mode,
-              status modification, and responsive management.
+              Launch into the full operations console with real-time charts,
+              dark mode, status modification, and responsive management.
             </p>
             <div className="mt-8 flex justify-center">
               <Link
@@ -367,7 +431,10 @@ export function LandingPage() {
                 className="group inline-flex items-center gap-3 rounded-2xl bg-white px-8 py-4 text-base font-bold text-slate-900 shadow-xl transition-all hover:bg-slate-100 hover:scale-105"
               >
                 <span>Launch Operations Dashboard</span>
-                <ArrowRight size={18} className="text-indigo-600 transition-transform group-hover:translate-x-1" />
+                <ArrowRight
+                  size={18}
+                  className="text-indigo-600 transition-transform group-hover:translate-x-1"
+                />
               </Link>
             </div>
           </div>
@@ -378,7 +445,9 @@ export function LandingPage() {
       <footer className="border-t border-slate-200 bg-white py-8 text-center text-xs text-slate-500 transition-colors dark:border-white/10 dark:bg-[#070b14] dark:text-slate-500">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between px-6 gap-4">
           <div className="flex items-center gap-2">
-            <span className="font-bold text-slate-800 dark:text-slate-200">OpsPulse</span>
+            <span className="font-bold text-slate-800 dark:text-slate-200">
+              OpsPulse
+            </span>
             <span>— Operations Management Dashboard</span>
           </div>
           <div className="flex items-center gap-4">
